@@ -47,6 +47,7 @@ evgb:
 logging:
   level:
     com.dyy.tsp: DEBUG
+    io.netty: DEBUG
 
 server:
   port: 9001
