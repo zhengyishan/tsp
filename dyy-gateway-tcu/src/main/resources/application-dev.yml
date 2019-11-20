@@ -1,0 +1,62 @@
+#需要设置spring.profiles.active=dev选择环境加载配置文件。
+#这里不考虑配置中心,比如naocs 阿波罗 consul
+spring:
+  application:
+    name: dyy-gateway-tcu
+  kafka:
+    bootstrapServers: localhost:9092
+    consumers:
+      tcu:
+        topic: dyy_debug_data
+        groupId: ${spring.application.name}
+        listener: com.dyy.tsp.gateway.tcu.kafka.DebugListener
+        valueDeserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      valueSerializer: org.apache.kafka.common.serialization.StringSerializer
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    jedis:
+      maxActive: 20
+      maxWait: -1
+      maxIdle: 8
+      onBorrow: true
+    database:
+      vehicle: 0
+      location: 1
+      transient: 2
+      command: 3
+
+tcu:
+  gatewayHost: localhost
+  gatewayPort: 8111
+  timeout: 30
+  maxFrameLength: 65556
+  lengthFieldOffset: 22
+  lengthFieldLength: 2
+  lengthAdjustment: 1
+  initialBytesToStrip: 0
+  failFast: true
+  reconnectMaxNum: 10000
+  heartVin: LSFGHHH0123456789
+  kafkaAcks: 1
+  kafkaLinger: 50
+  kafkaRetries: 1
+  kafkaRetryBackoff: 2000
+  kafkaReconnectBackoff: 3000
+  kafkaCompressionType: gzip
+  commandRequestTopic: dyy_command_request_data
+
+logging:
+  level:
+    com.dyy.tsp: DEBUG
+
+server:
+  port: 9002
+  tomcat:
+    accesslog:
+      enabled: false
+      directory: logs
+      pattern: common
+      prefix: access_log

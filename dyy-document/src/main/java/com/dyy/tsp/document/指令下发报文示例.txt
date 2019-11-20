@@ -1,0 +1,7 @@
+--dyy_command_request_data  网关基于Redis订阅发布实现
+关闭监控
+{"command":"CLOSE_DEBUG","vin":"LSFGHHH0123456789"}
+开启监控
+{"command":"OPEN_DEBUG","vin":"LSFGHHH0123456789"}
+清理内存
+{"command":"CLEAR_CAHCE","vin":"LSFGHHH0123456789"}

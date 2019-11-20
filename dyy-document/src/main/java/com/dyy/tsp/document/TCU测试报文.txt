@@ -1,0 +1,277 @@
+--车辆登入
+{
+  "beanTime": {
+    "day": 12,
+    "hours": 12,
+    "minutes": 12,
+    "month": 12,
+    "seconds": 12,
+    "year": 19
+  },
+  "codes": [
+    "CODE1"
+  ],
+  "iccid": "LSFGHHH0123456789123",
+  "serialNum": 1,
+  "vin": "LSFGHHH0123456789"
+}
+
+--车辆登出
+{
+  "beanTime": {
+    "day": 12,
+    "hours": 12,
+    "minutes": 14,
+    "month": 12,
+    "seconds": 50,
+    "year": 19
+  },
+  "serialNum": 1,
+  "vin": "LSFGHHH0123456789"
+}
+
+--平台登入
+{
+  "beanTime": {
+      "day": 12,
+      "hours": 12,
+      "minutes": 14,
+      "month": 12,
+      "seconds": 50,
+      "year": 19
+    },
+  "encryptionType": "NONE",
+  "password": "LSFGHHH0123456789123",
+  "serialNum": 1,
+  "userName": "LSFGHHH01345",
+  "vin": "LSFGHHH0123456789"
+}
+
+--平台登出
+{
+  "beanTime": {
+      "day": 12,
+      "hours": 12,
+      "minutes": 14,
+      "month": 50,
+      "seconds": 50,
+      "year": 19
+    },
+  "serialNum": 1,
+  "vin": "LSFGHHH0123456789"
+}
+
+--实时信息上报
+{
+	"alarmData": {
+		"alarmInfo": 0,
+		"deviceFailuresCodes": [0],
+		"deviceFailuresCount": 1,
+		"driveMotorFailuresCodes": [0],
+		"driveMotorFailuresCount": 1,
+		"engineFailuresCodes": [0],
+		"engineFailuresCount": 1,
+		"level": 0,
+		"otherFailuresCodes": [0],
+		"otherFailuresCount": 1
+	},
+	"beanTime": {
+		"day": 12,
+		"hours": 12,
+		"minutes": 14,
+		"month": 12,
+		"seconds": 50,
+		"year": 19
+	},
+	"driveMotorCount": 1,
+	"driveMotorDatas": [{
+		"controllerDcBusbarCurrent": 100,
+		"controllerInputVoltage": 100,
+		"controllerTemperature": 100,
+		"num": 1,
+		"speed": 100,
+		"status": 1,
+		"temperature": 100,
+		"torque": 100
+	}],
+	"engineData": {
+		"crankshaftSpeed": 100,
+		"fuelConsumption": 100,
+		"status": 1
+	},
+	"extremeData": {
+		"batteryMaxVoltage": 100,
+		"batteryMinVoltage": 100,
+		"maxTemperature": 100,
+		"maxTemperatureNum": 100,
+		"maxTemperatureSystemNum": 100,
+		"maxVoltageSystemNum": 100,
+		"maxVoltagebatteryNum": 100,
+		"minTemperature": 100,
+		"minTemperatureNum": 100,
+		"minTemperatureSystemNum": 100,
+		"minVoltageSystemNum": 100,
+		"minVoltagebatteryNum": 100
+	},
+	"fuelCellData": {
+		"current": 100,
+		"dcStatus": 100,
+		"fuelConsumption": 100,
+		"hydrogenSystemConcentrationProbeNum": 1,
+		"hydrogenSystemMaxConcentration": 1,
+		"hydrogenSystemMaxPressure": 1,
+		"hydrogenSystemMaxTemperature": 1,
+		"hydrogenSystemPressureProbeNum": 1,
+		"hydrogenSystemTemperatureProbeNum": 1,
+		"probeTemperatures": [0],
+		"temperatureProbeCount": 1,
+		"voltage": 1
+	},
+	"locationData": {
+		"latitude": 21333444,
+		"longitude": 121333444,
+		"status": 0
+	},
+	"subsystemTemperatureCount": 1,
+	"subsystemTemperatureDatas": [{
+		"num": 1,
+		"probetemperatures": [50],
+		"temperatureProbeCount": 1
+	}],
+	"subsystemVoltageCount": 1,
+	"subsystemVoltageDatas": [{
+		"batteryConnt": 1,
+		"batteryNumber": 1,
+		"cellCount": 2,
+		"cellVoltages": [10, 10],
+		"current": 1000,
+		"num": 1,
+		"voltage": 2000
+	}],
+	"vehicleData": {
+		"accelerationValue": 100,
+		"brakePedalCondition": 100,
+		"chargeStatus": 100,
+		"dcStatus": 99,
+		"gears": 99,
+		"insulationResistance": 100,
+		"mileage": 10000,
+		"operationMode": 100,
+		"soc": 100,
+		"speed": 900,
+		"totalCurrent": 900,
+		"totalVoltage": 900,
+		"vehicleStatus": 1
+	},
+	"commandType": "REALTIME_DATA_REPORTING",
+	"vin": "LSFGHHH0123456789"
+}
+
+--补发信息上报
+{
+	"alarmData": {
+		"alarmInfo": 0,
+		"deviceFailuresCodes": [0],
+		"deviceFailuresCount": 1,
+		"driveMotorFailuresCodes": [0],
+		"driveMotorFailuresCount": 1,
+		"engineFailuresCodes": [0],
+		"engineFailuresCount": 1,
+		"level": 0,
+		"otherFailuresCodes": [0],
+		"otherFailuresCount": 1
+	},
+	"beanTime": {
+		"day": 12,
+		"hours": 12,
+		"minutes": 14,
+		"month": 12,
+		"seconds": 50,
+		"year": 19
+	},
+	"driveMotorCount": 1,
+	"driveMotorDatas": [{
+		"controllerDcBusbarCurrent": 100,
+		"controllerInputVoltage": 100,
+		"controllerTemperature": 100,
+		"num": 1,
+		"speed": 100,
+		"status": 1,
+		"temperature": 100,
+		"torque": 100
+	}],
+	"engineData": {
+		"crankshaftSpeed": 100,
+		"fuelConsumption": 100,
+		"status": 1
+	},
+	"extremeData": {
+		"batteryMaxVoltage": 100,
+		"batteryMinVoltage": 100,
+		"maxTemperature": 100,
+		"maxTemperatureNum": 100,
+		"maxTemperatureSystemNum": 100,
+		"maxVoltageSystemNum": 100,
+		"maxVoltagebatteryNum": 100,
+		"minTemperature": 100,
+		"minTemperatureNum": 100,
+		"minTemperatureSystemNum": 100,
+		"minVoltageSystemNum": 100,
+		"minVoltagebatteryNum": 100
+	},
+	"fuelCellData": {
+		"current": 100,
+		"dcStatus": 100,
+		"fuelConsumption": 100,
+		"hydrogenSystemConcentrationProbeNum": 1,
+		"hydrogenSystemMaxConcentration": 1,
+		"hydrogenSystemMaxPressure": 1,
+		"hydrogenSystemMaxTemperature": 1,
+		"hydrogenSystemPressureProbeNum": 1,
+		"hydrogenSystemTemperatureProbeNum": 1,
+		"probeTemperatures": [0],
+		"temperatureProbeCount": 1,
+		"voltage": 1
+	},
+	"locationData": {
+		"latitude": 21333444,
+		"longitude": 121333444,
+		"status": 0
+	},
+	"subsystemTemperatureCount": 1,
+	"subsystemTemperatureDatas": [{
+		"num": 1,
+		"probetemperatures": [50],
+		"temperatureProbeCount": 1
+	}],
+	"subsystemVoltageCount": 1,
+	"subsystemVoltageDatas": [{
+		"batteryConnt": 1,
+		"batteryNumber": 1,
+		"cellCount": 2,
+		"cellVoltages": [10, 10],
+		"current": 1000,
+		"num": 1,
+		"voltage": 2000
+	}],
+	"vehicleData": {
+		"accelerationValue": 100,
+		"brakePedalCondition": 100,
+		"chargeStatus": 100,
+		"dcStatus": 99,
+		"gears": 99,
+		"insulationResistance": 100,
+		"mileage": 10000,
+		"operationMode": 100,
+		"soc": 100,
+		"speed": 900,
+		"totalCurrent": 900,
+		"totalVoltage": 900,
+		"vehicleStatus": 1
+	},
+	"commandType": "REPLACEMENT_DATA_REPORTING",
+	"vin": "LSFGHHH0123456789"
+}
+
+--终端校时
+LSFGHHH0123456789
