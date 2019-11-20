@@ -1,6 +1,5 @@
 package com.dyy.tsp.gateway.server.handler;
 
-import com.dyy.tsp.common.entity.VehicleCache;
 import com.dyy.tsp.core.base.AbstractBusinessHandler;
 import com.dyy.tsp.core.evgb.entity.EvGBProtocol;
 import com.dyy.tsp.core.evgb.enumtype.ResponseType;
@@ -23,12 +22,6 @@ public class HeartBeatHandler extends AbstractBusinessHandler {
 
     @Override
     public void doBusiness(EvGBProtocol protrocol, Channel channel) {
-        VehicleCache vehicleCache = protrocol.getVehicleCache();
-        if(!this.checkLogin(vehicleCache)){
-            protrocol.setResponseType(ResponseType.FAILURE);
-        }else{
-            protrocol.setResponseType(ResponseType.SUCCESS);
-        }
-        channel.writeAndFlush(protrocol.encode());
+        doCommonResponse(ResponseType.SUCCESS,protrocol,channel);
     }
 }

@@ -6,11 +6,14 @@ import com.dyy.tsp.common.enumtype.LibraryType;
 import com.dyy.tsp.core.base.AbstractBusinessHandler;
 import com.dyy.tsp.core.base.IHandler;
 import com.dyy.tsp.core.evgb.entity.EvGBProtocol;
-import com.dyy.tsp.gateway.server.common.CachePrefixEnum;
+import com.dyy.tsp.core.evgb.enumtype.CommandType;
 import com.dyy.tsp.gateway.server.common.CommonCache;
 import com.dyy.tsp.gateway.server.enumtype.EvGBHandlerType;
+import com.dyy.tsp.gateway.server.util.HelperKeyUtil;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -23,6 +26,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BusinessHandler extends AbstractBusinessHandler implements ApplicationContextAware {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BusinessHandler.class);
 
     private ApplicationContext applicationContext;
 
@@ -37,24 +42,18 @@ public class BusinessHandler extends AbstractBusinessHandler implements Applicat
         debugHandler.debugger(protocol);
         EvGBHandlerType evGBHandlerType = EvGBHandlerType.valuesOf(protocol.getCommandType().getId());
         if(evGBHandlerType.getHandler()!=null){
-            String key = this.getKey(protocol.getVin());
+            String key = HelperKeyUtil.getKey(protocol.getVin());
             VehicleCache vehicleCache = this.findVehicleCache(key);
+            if(protocol.getCommandType()!= CommandType.PLATFORM_LOGIN){//平台登入,VIN规则不一样,不做校验
+                if(vehicleCache == null){
+                    LOGGER.warn("{} is not platform vehicle",protocol.getVin());
+                    return;
+                }
+            }
             protocol.setVehicleCache(vehicleCache);
             IHandler handler = (IHandler) applicationContext.getBean(evGBHandlerType.getHandler());
             handler.doBusiness(protocol,channel);
         }
-    }
-
-    /**
-     * 生成固定规则Key
-     * @param vin
-     * @return
-     */
-    private String getKey(String vin) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(CachePrefixEnum.VEHICLE_CACHE.getPrefix());
-        sb.append(vin);
-        return sb.toString();
     }
 
     /**

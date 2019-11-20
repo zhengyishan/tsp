@@ -32,11 +32,11 @@ public abstract class AbstractBusinessHandler implements IHandler {
     public abstract void doBusiness(EvGBProtocol protrocol, Channel channel);
 
     @Override
-    public void doCommonResponse(ResponseType responseType, EvGBProtocol protrocol, Channel channel) {
+    public void doCommonResponse(ResponseType responseType,EvGBProtocol protrocol,Channel channel) {
         protrocol.setBody(null);
         protrocol.setResponseType(responseType);
         channel.writeAndFlush(Unpooled.wrappedBuffer(protrocol.encode()));
-        LOGGER.debug("{} {} 响应成功",protrocol.getVin(),protrocol.getCommandType().getDesc());
+        LOGGER.debug("{} {} 响应{}",protrocol.getVin(),protrocol.getCommandType().getDesc());
     }
 
 }

@@ -3,13 +3,17 @@ package com.dyy.tsp.gateway.server.netty;
 import com.alibaba.fastjson.JSONObject;
 import com.dyy.tsp.core.evgb.entity.EvGBProtocol;
 import com.dyy.tsp.core.handler.AbstractNettyHandler;
+import com.dyy.tsp.gateway.server.common.CachePrefixEnum;
+import com.dyy.tsp.gateway.server.common.CommonCache;
 import com.dyy.tsp.gateway.server.handler.BusinessHandler;
 import com.dyy.tsp.gateway.server.handler.RedisHandler;
+import com.dyy.tsp.gateway.server.util.HelperKeyUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +49,12 @@ public class EvGBHandler extends AbstractNettyHandler {
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception{
+        Channel channel = ctx.channel();
+        String vin = CommonCache.channelVinMap.remove(channel);
+        if(StringUtils.isNotBlank(vin)){
+            CommonCache.vinChannelMap.remove(vin);
+            CommonCache.vehicleCacheMap.remove(HelperKeyUtil.getKey(vin));
+        }
         super.channelInactive(ctx);
     }
 
@@ -63,5 +73,17 @@ public class EvGBHandler extends AbstractNettyHandler {
                 channel.close();
             }
         }
+    }
+
+    /**
+     * 生成固定规则Key
+     * @param vin
+     * @return
+     */
+    private String getKey(String vin) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(CachePrefixEnum.VEHICLE_CACHE.getPrefix());
+        sb.append(vin);
+        return sb.toString();
     }
 }

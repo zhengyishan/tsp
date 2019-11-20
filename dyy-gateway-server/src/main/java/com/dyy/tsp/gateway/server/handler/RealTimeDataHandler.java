@@ -40,11 +40,11 @@ public class RealTimeDataHandler extends AbstractBusinessHandler {
 
     /**
      * 实时信息上报与补发信息上报逻辑一致。共用一个方法
+     * 按照国家标准不需要给终端响应
      * @param protrocol
      * @param channel
      */
     private void doRealtimeData(EvGBProtocol protrocol, Channel channel) {
-
-
+        forwardHandler.sendToDispatcher(protrocol);
     }
 }
